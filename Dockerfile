@@ -14,13 +14,13 @@
 
 FROM golang:1.21.0 as builder
 WORKDIR /app
-RUN go mod init hello-app
+RUN go mod init demo-test
 COPY *.go ./
-RUN CGO_ENABLED=0 GOOS=linux go build -o /hello-app
+RUN CGO_ENABLED=0 GOOS=linux go build -o /demo-test
 
 FROM gcr.io/distroless/base-debian11
 WORKDIR /
-COPY --from=builder /hello-app /hello-app
+COPY --from=builder /demo-test /demo-test
 ENV PORT 8080
 USER nonroot:nonroot
-CMD ["/hello-app"]
+CMD ["/demo-test"]
