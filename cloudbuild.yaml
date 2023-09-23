@@ -74,3 +74,4 @@ images:
 #   - 'us-docker.pkg.dev/google-samples/containers/gke/hello-app:1.0'
 #   - 'gcr.io/google-samples/hello-app:2.0'
 #   - 'us-docker.pkg.dev/google-samples/containers/gke/hello-app:2.0'
+
