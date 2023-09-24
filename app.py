@@ -24,7 +24,7 @@ def hello():
 
     # Cerrar la conexión
     connection.close()
-    return f"Hello, fucking world!\nVersion: 1.0.0\nHostname: {host} and {os.environ['RABBITMQ_HOST']}\n"
+    return f"Hello, fucking world!\nVersion: 1.0.0\nHostname: {host} and {os.environ['RABBITMQ_HOST']} and {mensaje}\n"
 
 if __name__ == '__main__':
     port = os.environ.get('PORT', '8080')
