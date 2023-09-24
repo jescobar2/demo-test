@@ -32,6 +32,7 @@ def hello():
     # except Exception as e:
     #     values_exp = str(e)
     # Cerrar la conexión
+    a = "si publico"
     try:
         message = {"dataFormat": "JSON_API_V1", 
                 "eventType": "SECRET_ROTATE", 
@@ -55,9 +56,8 @@ def hello():
         futures.wait(publish_futures, return_when=futures.ALL_COMPLETED)
    
         print(f"Published messages with error handler to {topic_path}.")
-        a = "si publico"
     except Exception as e:
-        a = print(str(e))
+        a = "no publico"
 
     return f"Hello, publisher fucking world!\nVersion: 1.0.0\nHostname: {host} and {os.environ['RABBITMQ_HOST']} and {a}\n"
 
