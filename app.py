@@ -55,6 +55,7 @@ def hello():
         futures.wait(publish_futures, return_when=futures.ALL_COMPLETED)
    
         print(f"Published messages with error handler to {topic_path}.")
+        a = "si publico"
     except Exception as e:
         a = print(str(e))
 
