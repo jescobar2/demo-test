@@ -12,7 +12,7 @@ spec:
 
 ---
 apiVersion: v1
-kind: IAMServiceAccount
+kind: ServiceAccount
 metadata:
   name: publisher-app
   namespace: microservicios-distribuidas
