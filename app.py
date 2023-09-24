@@ -22,10 +22,10 @@ def hello():
         channel.basic_publish(exchange='', routing_key='mi_cola', body=mensaje)
 
         print(f"Mensaje enviado: '{mensaje}'")
+        connection.close()
     except Exception as e:
         print(e)
     # Cerrar la conexión
-    connection.close()
     return f"Hello, publisher fucking world!\nVersion: 1.0.0\nHostname: {host} and {os.environ['RABBITMQ_HOST']}\n"
 
 if __name__ == '__main__':
