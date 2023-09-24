@@ -11,6 +11,21 @@ spec:
       targetPort: 8080
 
 ---
+apiVersion: iam.cnrm.cloud.google.com/v1beta1
+kind: IAMServiceAccount
+metadata:
+  name: publisher-app
+  namespace: microservicios-distribuidas
+  annotations:
+    cnrm.cloud.google.com/project-id: hazel-champion-399821
+  labels:
+    app: publisher-app
+spec:
+  resourceID: publisher-app
+  displayName: publisher-app
+  description: publisher-app service account
+
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
