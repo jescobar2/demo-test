@@ -66,6 +66,7 @@ spec:
           operator: Equal
           value: amd64
 
+
 ---
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
