@@ -6,7 +6,7 @@ app = Flask(__name__)
 @app.route('/')
 def hello():
     host = os.uname()[1]
-    return f"Hello, fucking world!\nVersion: 1.0.0\nHostname: {host}\n"
+    return f"Hello, fucking world!\nVersion: 1.0.0\nHostname: {host} and {os.environ['RABBITMQ_HOST']}\n"
 
 if __name__ == '__main__':
     port = os.environ.get('PORT', '8080')
