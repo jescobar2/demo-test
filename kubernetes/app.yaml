@@ -71,7 +71,7 @@ apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: hello-app
-  namespace: default
+  namespace: microservicios-distribuidas
 spec:
   maxReplicas: 5
   metrics:
