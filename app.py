@@ -8,20 +8,22 @@ app = Flask(__name__)
 def hello():
     host = os.uname()[1]
     # Configuración de la conexión a RabbitMQ
-    connection = pika.BlockingConnection(pika.ConnectionParameters(os.environ['RABBITMQ_HOST']))
-    channel = connection.channel()
+    try:
+        connection = pika.BlockingConnection(pika.ConnectionParameters(os.environ['RABBITMQ_HOST']))
+        channel = connection.channel()
 
-    # Declarar una cola
-    channel.queue_declare(queue='mi_cola')
+        # Declarar una cola
+        channel.queue_declare(queue='mi_cola')
 
-    # Mensaje que deseas enviar
-    mensaje = "Hola, RabbitMQ! this is it"
+        # Mensaje que deseas enviar
+        mensaje = "Hola, RabbitMQ! this is it"
 
-    # Publicar el mensaje en la cola
-    channel.basic_publish(exchange='', routing_key='mi_cola', body=mensaje)
+        # Publicar el mensaje en la cola
+        channel.basic_publish(exchange='', routing_key='mi_cola', body=mensaje)
 
-    print(f"Mensaje enviado: '{mensaje}'")
-
+        print(f"Mensaje enviado: '{mensaje}'")
+    except Exception as e:
+        print(e)
     # Cerrar la conexión
     connection.close()
     return f"Hello, publisher fucking world!\nVersion: 1.0.0\nHostname: {host} and {os.environ['RABBITMQ_HOST']}\n"

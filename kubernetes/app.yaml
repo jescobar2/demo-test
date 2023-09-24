@@ -21,7 +21,7 @@ metadata:
   labels:
     app: hello-app
   name: hello-app
-  namespace: hello-app-sit
+  namespace: microservicios-distribuidas
 spec:
   replicas: 1
   selector:
