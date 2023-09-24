@@ -12,15 +12,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM golang:1.21.0 as builder
-WORKDIR /app
-RUN go mod init demo-test
-COPY *.go ./
-RUN CGO_ENABLED=0 GOOS=linux go build -o /demo-test
+FROM python:3.9-slim as builder
 
-FROM gcr.io/distroless/base-debian11
-WORKDIR /
-COPY --from=builder /demo-test /demo-test
-ENV PORT 8080
-USER nonroot:nonroot
-CMD ["/demo-test"]
+WORKDIR /app
+
+# Copy your Python source code and any necessary files
+COPY app.py requirements.txt ./
+
+# Install dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Build a standalone Python application (if needed)
+
+# Switch to a non-root user
+RUN useradd -m nonroot
+USER nonroot
+
+# Set environment variables, if necessary
+# ENV VARIABLE_NAME=value
+
+# Define the command to run your application
+CMD ["python", "app.py"]
