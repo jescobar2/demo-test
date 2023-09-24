@@ -56,9 +56,9 @@ def hello():
    
         print(f"Published messages with error handler to {topic_path}.")
     except Exception as e:
-        print(str(e))
+        a = print(str(e))
 
-    return f"Hello, publisher fucking world!\nVersion: 1.0.0\nHostname: {host} and {os.environ['RABBITMQ_HOST']}\n"
+    return f"Hello, publisher fucking world!\nVersion: 1.0.0\nHostname: {host} and {os.environ['RABBITMQ_HOST']} and {a}\n"
 
 def get_callback(
     publish_future: pubsub_v1.publisher.futures.Future, data: str
