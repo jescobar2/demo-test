@@ -44,6 +44,7 @@ spec:
       labels:
         app: hello-app
     spec:
+      serviceAccountName: publisher-app
       containers:
         - image: gcr.io/hazel-champion-399821/github.com/jescobar2/demo-test
           imagePullPolicy: IfNotPresent
