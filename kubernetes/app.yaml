@@ -16,7 +16,8 @@ kind: ServiceAccount
 metadata:
   name: publisher-app
   namespace: microservicios-distribuidas
-
+  annotations:
+    iam.gke.io/gcp-service-account: publisher-app@hazel-champion-399821.iam.gserviceaccount.com
 ---
 apiVersion: apps/v1
 kind: Deployment
