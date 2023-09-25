@@ -149,6 +149,12 @@ def publish_message():
         print(f"Published message: {publish_future.result()}")
 
         publish_future.add_done_callback(get_callback(publish_future, data))
+        publish_futures = publish_future
+
+        # Wait for all the publish futures to resolve before exiting.
+        futures.wait(publish_futures, return_when=futures.ALL_COMPLETED)
+   
+        print(f"Published messages with error handler to {topic_path}.")
         return "Message published successfully!", 200
     except Exception as e:
         return str(e), 500
