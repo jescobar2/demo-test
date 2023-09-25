@@ -32,34 +32,34 @@ def hello():
     # except Exception as e:
     #     values_exp = str(e)
     # Cerrar la conexión
-    a = "si publico"
-    try:
-        message = {"dataFormat": "JSON_API_V1", 
-                "eventType": "SECRET_ROTATE", 
-                "secretId": "solictando traslado a operador x",
-                "project_id": "hazel-champion-399821"}
+    # a = "si publico"
+    # try:
+    #     message = {"dataFormat": "JSON_API_V1", 
+    #             "eventType": "SECRET_ROTATE", 
+    #             "secretId": "solictando traslado a operador x",
+    #             "project_id": "hazel-champion-399821"}
 
-        project_id = "hazel-champion-399821"
-        topic_id = "traslado-operador"
-        publisher = pubsub_v1.PublisherClient()
-        topic_path = publisher.topic_path(project_id, topic_id)
+    #     project_id = "hazel-champion-399821"
+    #     topic_id = "traslado-operador"
+    #     publisher = pubsub_v1.PublisherClient()
+    #     topic_path = publisher.topic_path(project_id, topic_id)
 
-        data = json.dumps(message)
-        # When you publish a message, the client returns a future.
-        publish_future = publisher.publish(topic_path, data.encode("utf-8"))
-        # Non-blocking. Publish failures are handled in the callback function.
-        print(f"publish message: {publish_future.result()}")
-        publish_future.add_done_callback(get_callback(publish_future, data))
-        publish_futures = publish_future
+    #     data = json.dumps(message)
+    #     # When you publish a message, the client returns a future.
+    #     publish_future = publisher.publish(topic_path, data.encode("utf-8"))
+    #     # Non-blocking. Publish failures are handled in the callback function.
+    #     print(f"publish message: {publish_future.result()}")
+    #     publish_future.add_done_callback(get_callback(publish_future, data))
+    #     publish_futures = publish_future
 
-        # Wait for all the publish futures to resolve before exiting.
-        futures.wait(publish_futures, return_when=futures.ALL_COMPLETED)
+    #     # Wait for all the publish futures to resolve before exiting.
+    #     futures.wait(publish_futures, return_when=futures.ALL_COMPLETED)
    
-        print(f"Published messages with error handler to {topic_path}.")
-    except Exception as e:
-        a = "no publico"
+    #     print(f"Published messages with error handler to {topic_path}.")
+    # except Exception as e:
+    #     a = "no publico"
 
-    return f"Hello, publisher fucking world!\nVersion: 1.0.0\nHostname: {host} and {os.environ['RABBITMQ_HOST']} and {a}\n"
+    return f"Hello, publisher fucking world!\nVersion: 1.0.0\nHostname: {host} and {os.environ['RABBITMQ_HOST']}\n"
 
 
 def get_callback(
