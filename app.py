@@ -83,7 +83,7 @@ def main():
     try:
         message = {"dataFormat": "JSON_API_V1", 
                 "eventType": "SECRET_ROTATE", 
-                "secretId": "solictando traslado a operador z",
+                "secretId": "solictando traslado a operador xxx",
                 "project_id": "hazel-champion-399821"}
 
         project_id = "hazel-champion-399821"
