@@ -138,7 +138,7 @@ def get_callback(
 
     return callback
 
-@app.route('/publish', methods=['POST'])
+@app.route('/')
 def publish_message():
     try:
         # message_data = request.get_json()
