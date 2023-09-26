@@ -118,16 +118,16 @@ app = Flask(__name__)
 # Configuración de Google Cloud Pub/Sub
 from google.cloud import pubsub_v1
 
-def get_callback(
-    publish_future: pubsub_v1.publisher.futures.Future, data: str
-):
-    def callback(publish_future: pubsub_v1.publisher.futures.Future):
-        try:
-            print(publish_future.result(timeout=60))
-        except futures.TimeoutError:
-            print(f"Publishing {data} timed out.")
+# def get_callback(
+#     publish_future: pubsub_v1.publisher.futures.Future, data: str
+# ):
+#     def callback(publish_future: pubsub_v1.publisher.futures.Future):
+#         try:
+#             print(publish_future.result(timeout=60))
+#         except futures.TimeoutError:
+#             print(f"Publishing {data} timed out.")
 
-    return callback
+#     return callback
 
 @app.route('/')
 def publish_message():
@@ -147,11 +147,11 @@ def publish_message():
         publish_future = publisher.publish(topic_path, data.encode("utf-8"))
         print(f"Published message: {publish_future.result()}")
 
-        publish_future.add_done_callback(get_callback(publish_future, data))
-        publish_futures = publish_future
+        # publish_future.add_done_callback(get_callback(publish_future, data))
+        # publish_futures = publish_future
 
-        # Wait for all the publish futures to resolve before exiting.
-        futures.wait(publish_futures, return_when=futures.ALL_COMPLETED)
+        # # Wait for all the publish futures to resolve before exiting.
+        # futures.wait(publish_futures, return_when=futures.ALL_COMPLETED)
    
         print(f"Published messages with error handler to {topic_path}.")
         return "Message published successfully!", 200
