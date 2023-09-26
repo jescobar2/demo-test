@@ -144,8 +144,8 @@ def publish_message():
         data = json.dumps(message)
 
         # Publicar el mensaje en Google Cloud Pub/Sub
-        publisher.publish(topic_path, data.encode("utf-8"))
-        # print(f"Published message: {publish_future.result()}")
+        publish_future = publisher.publish(topic_path, data.encode("utf-8"))
+        print(f"Published message: {publish_future.result()}")
 
         # publish_future.add_done_callback(get_callback(publish_future, data))
         # publish_futures = publish_future
