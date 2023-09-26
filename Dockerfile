@@ -31,5 +31,6 @@ USER nonroot
 # Set environment variables, if necessary
 # ENV VARIABLE_NAME=value
 ENV PORT 8080
+EXPOSE 8080
 # Define the command to run your application
 CMD ["python", "app.py"]
