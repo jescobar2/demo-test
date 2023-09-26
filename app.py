@@ -140,12 +140,12 @@ def publish_message():
                 "eventType": "SECRET_ROTATE", 
                 "secretId": "solictando traslado a operador z",
                 "project_id": "hazel-champion-399821"}
-        message_data = request.get_json()
-        data = json.dumps(message_data)
+        # message_data = request.get_json()
+        data = json.dumps(message)
 
         # Publicar el mensaje en Google Cloud Pub/Sub
-        publish_future = publisher.publish(topic_path, data.encode("utf-8"))
-        print(f"Published message: {publish_future.result()}")
+        publisher.publish(topic_path, data.encode("utf-8"))
+        # print(f"Published message: {publish_future.result()}")
 
         # publish_future.add_done_callback(get_callback(publish_future, data))
         # publish_futures = publish_future
